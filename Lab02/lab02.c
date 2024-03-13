@@ -44,13 +44,13 @@ int main(void) {
       printf("Erro ao criar threads");
       break;
     }else{
-      printf("Thread %d criada com sucesso!\n", i);
+      printf("%dª Thread criada com sucesso!\n", i+1);
     }
     pthread_join(threads[i], NULL);
   }
 
   //Print resultado
-  printf("Resultado: ");
+  printf("Resultado da multiplicação da matriz: ");
   printf("[");
   for(int k = 0; k < size; k++){
     if(k == size-1){
