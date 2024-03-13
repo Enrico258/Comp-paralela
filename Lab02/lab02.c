@@ -12,12 +12,14 @@ int matriz[3][3] = {
 int vet[3] = {1,2,3}; //Vetor que será multiplicado pela matriz
 
 int vetResult[3] = {0,0,0}; //Vetor resultados
-int tamanho = sizeof(vet)/sizeof(vet[0]);
+int size = sizeof(vet)/sizeof(vet[0]);
 
 //Print matriz
 void printMatriz(int *matriz, int len){
   printf("[");
-  for(int i =0; i<len; i++) printf(" %d ", matriz[i]);
+for (int i = 0; i < len; i++){
+	if(i != len-1){printf("%d ", matriz[i]);
+}else{printf("%d", matriz[i]);}}
   printf("]\n");
 }
 
@@ -25,10 +27,10 @@ void printMatriz(int *matriz, int len){
 void* lerLinhas(void* args){
   int *index = (int*)args;
   int i = *index;
-  for(int j = 0; j < size; j++){
-    result[i] += A[i][j] * vet[j];
+  for (int j = 0; j < size; j++){
+    vetResult[i] += matriz[i][j] * vet[j];
   }
-  printaVetorThread(result, size);
+  printMatriz(vetResult, size);
 }
 
 int main(void) {
@@ -50,12 +52,12 @@ int main(void) {
   //Print resultado
   printf("Resultado: ");
   printf("[");
-  for(int i = 0; i < size; i++){
-    if(i == size-1){
-      printf("%d", result[i]);
+  for(int k = 0; k < size; k++){
+    if(k == size-1){
+      printf("%d", vetResult[k]);
     }
     else{
-    printf("%d,", result[i]);
+    printf("%d,", vetResult[k]);
     }
   }
   printf("]\n");
