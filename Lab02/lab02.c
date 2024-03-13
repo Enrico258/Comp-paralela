@@ -24,7 +24,7 @@ for (int i = 0; i < len; i++){
 }
 
 //Ler linhas
-void* lerLinhas(void* args){
+void* calculaMatriz(void* args){
   int *index = (int*)args;
   int i = *index;
   for (int j = 0; j < size; j++){
@@ -40,7 +40,7 @@ int main(void) {
 
   for(int i = 0; i < size; i++){
     //Verifica criação das threads
-    if(pthread_create(&threads[i], NULL, lerLinhas, &i) != 0){
+    if(pthread_create(&threads[i], NULL, calculaMatriz, &i) != 0){
       printf("Erro ao criar threads");
       break;
     }else{
